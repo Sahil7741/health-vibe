@@ -1,15 +1,15 @@
 // Imported Required Frameworks And Modules and created Express App Instance
-const express = require("express");
+import express from "express";
 const app = express();
-const userRoutes = require("../backend/routes/userRoutes");
+import userRoutes from "./routes/userRoutes.js";
 // const productRoutes = require("../backend/routes/productRoutes");
 // const paymentRoutes = require("../backend/routes/paymentRoutes");
-const connectDb = require("./config/dbconnect");
+import connectDb from "./config/dbconnect.js";
 
 // Imported all Required Middlewares
 // const cors = require("cors");
-// const cookieParser = require("cookie-parser");
-const bodyParser = require("body-parser");
+import cookieParser from "cookie-parser";
+import bodyParser from "body-parser";
 
 // Defined Port for server
 const port = process.env.PORT || 3000;
@@ -38,7 +38,7 @@ startServer();
 // app.use(cors({ origin: process.env.FRONTEND , credentials: true }));
 
 // Middleware for parsing cookies
-// app.use(cookieParser());
+app.use(cookieParser());
 
 // Middleware for parsing JSON and URL-encoded data in request bodies
 app.use(bodyParser.json());

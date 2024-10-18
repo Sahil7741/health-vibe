@@ -1,15 +1,15 @@
 // Required Librarys Imported
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
+import { connect as _connect } from "mongoose";
+import { config } from "dotenv";
 
 // Brings Environment Variable form .env file into Runtime Environment
-dotenv.config();
+config();
 
 // Asynchronous function to Connect Database
 const connectDb = async () => {
   try {
     // Attempt to connect MongoDB using Mongoose
-    const connect = await mongoose.connect(process.env.URI);
+    const connect = await _connect(process.env.URI);
 
     // If connection is sucessful, log connection details
     console.log(
@@ -26,4 +26,4 @@ const connectDb = async () => {
 };
 
 // Export connectDb function
-module.exports = connectDb;
+export default connectDb;
