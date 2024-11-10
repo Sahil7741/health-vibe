@@ -7,37 +7,27 @@ import { useUser } from '../../hooks/useUser';
 import GoogleLogin from '../../components/Social/GoogleLogin';
 const Login = () => {
     useTitle('Login | Yoga Master - Unleashed Your Inner Self');
+    // const { refetch } = useUser();
     const location = useLocation();
     const [showPassword, setShowPassword] = useState(false);
     const { login, error, setError, loader, setLoader } = useAuth();
     const navigate = useNavigate();
 
-    const handelSubmit = (e) => {
-        setError('');  // Reset any previous error messages
-        e.preventDefault();
-        const data = new FormData(e.target); // Collect form data
-        const formData = Object.fromEntries(data); // Convert form data to an object
-        console.log(formData);
-        setLoader(true);  // Show loading spinner or disable button
-
-        // Make a POST request to the backend API to validate login credentials
-        axios
-            .post('http://localhost:5000/login', {
-                email: formData.email,
-                password: formData.password,
+    const handelSubmit = e => {
+        setError('')
+        e.preventDefault()
+        const data = new FormData(e.target)
+        const formData = Object.fromEntries(data)
+        login(formData.email, formData.password)
+            .then(() => {
+                // refetch()
+                navigate(location.state?.from || '/dashboard')
             })
-            .then((response) => {
-                // Assuming the backend returns a token
-                localStorage.setItem('authToken', response.data.token); // Store token in localStorage
-
-                // Redirect user to the page they were trying to access or the dashboard
-                navigate(location.state?.from || '/dashboard');
+            .catch(err => {
+                setError(err.code);
+                setLoader(false)
             })
-            .catch((err) => {
-                setError('Invalid email or password'); // Show error message
-                setLoader(false);  // Hide loading spinner or enable button
-            });
-    };
+    }
 
     return (
         <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">

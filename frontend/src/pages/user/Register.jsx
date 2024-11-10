@@ -21,31 +21,48 @@ const Register = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data);
-        // Clear previous error messages
         setError('');
+        toast.promise(
+            signUp(data.email, data.password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    if (user) {
+                        return updateUser(data.name, data.photoUrl).then(() => {
+                            const userImp = {
+                                name: user.displayName,
+                                email: user.email,
+                                photoUrl: user.photoURL,
+                                gender: data.gender,
+                                address: data.address,
+                                role: 'user',
+                                phone: data.phone,
+                            };
 
-        const userData = {
-            name: data.name,
-            email: data.email,
-            password: data.password,
-            photoUrl: data.photoUrl,
-            gender: data.gender,
-            address: data.address,
-            phone: data.phone,
-        };
-
-        axios.post('http://localhost:5000/new-user', userData)
-            .then((response) => {
-                navigate('/');
-                console.log('Registration successful:', response.data);
-            })
-            .catch((err) => {
-                setError('Registration failed! Please try again.');
-                console.error(err);
-            });
+                            if (user.email && user.displayName) {
+                                return axios
+                                    .post('http://localhost:5000/new-user', userImp)
+                                    .then(() => {
+                                        navigate('/');
+                                        return 'Registration successful!';
+                                    })
+                                    .catch((err) => {
+                                        throw new Error(err);
+                                    });
+                            }
+                        });
+                    }
+                })
+                .catch((err) => {
+                    setError(err.code);
+                    throw new Error(err);
+                }),
+            {
+                pending: 'Please wait...',
+                success: 'Registration successful!',
+                error: 'Registration failed!',
+            }
+        );
     };
-    
 
     const password = watch('password', '');
 
