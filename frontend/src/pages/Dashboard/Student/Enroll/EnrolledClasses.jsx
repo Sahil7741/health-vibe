@@ -101,7 +101,7 @@ const EnrolledClasses = () => {
                                 {item.classes.description?.length > 100 ? item.classes.description.slice(0, 100) + '...' : item.classes.description}
                             </p>
                             <div className="w-full flex justify-between items-center">
-                                <h1 className="font-bold text-gray-500">${item.classes.price}</h1>
+                                <h1 className="font-bold text-gray-500">₹{item.classes.price}</h1>
                                 <button
                                     className="bg-secondary font-bold rounded-xl mr-5 text-white px-3 py-1 shadow-md"
                                 >

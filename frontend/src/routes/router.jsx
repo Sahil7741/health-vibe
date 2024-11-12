@@ -57,7 +57,7 @@ export const router = createBrowserRouter([
             {
                 path: "class/:id",
                 element: <SingleClass/>,
-                loader: ({ params }) => fetch(`http://localhost:5000/class/${params.id}`),
+                loader: ({ params }) => fetch(`https://healthvibe-deployed.onrender.com/class/${params.id}`),
             }
         ]
     },
@@ -78,7 +78,7 @@ export const router = createBrowserRouter([
             {
                 path: 'update-user/:id',
                 element: <AdminRoute><UpdateUser /></AdminRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`),
+                loader: ({ params }) => fetch(`https://healthvibe-deployed.onrender.com/users/${params.id}`),
             },
             {
                 path: 'admin-home',
@@ -104,7 +104,7 @@ export const router = createBrowserRouter([
             {
                 path: 'update/:id',
                 element: <InstructorRoute><UpdateClass /></InstructorRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/class/${params.id}`),
+                loader: ({ params }) => fetch(`https://healthvibe-deployed.onrender.com/class/${params.id}`),
             },
             // * STUDENT ROUTES
             {

@@ -24,10 +24,10 @@ const adminNavItems = [
 ];
 const instructorNavItem = [
     { to: "/dashboard/instructor-cp", icon: <FaHome className="text-2xl" />, label: "Home" },
-    { to: "/dashboard/add-class", icon: <MdExplore className="text-2xl" />, label: "Add A class" },
+    { to: "/dashboard/add-class", icon: <MdExplore className="text-2xl" />, label: "Create Class" },
     { to: "/dashboard/my-classes", icon: <IoSchoolSharp className="text-2xl" />, label: "My Classes" },
-    { to: "/dashboard/my-pending", icon: <MdPendingActions className="text-2xl" />, label: "Pending Classes" },
-    { to: "/dashboard/my-approved", icon: <IoMdDoneAll className="text-2xl" />, label: "Approved Classes" },
+    // { to: "/dashboard/my-pending", icon: <MdPendingActions className="text-2xl" />, label: "Pending Classes" },
+    // { to: "/dashboard/my-approved", icon: <IoMdDoneAll className="text-2xl" />, label: "Approved Classes" },
 ];
 const student = [
     { to: "/dashboard/student-cp", icon: <BiHomeAlt className="text-2xl" />, label: "Dashboard" },
@@ -110,7 +110,7 @@ const DashboardLayout = () => {
                             }`}
                         onClick={() => setOpen(!open)}
                     >
-                        Yoga Master
+                        Health Vibe
                     </h1>
                 </div>
                 {/* Nav links  */}

@@ -10,7 +10,7 @@ import { HiOutlineLocationMarker } from 'react-icons/hi';
 import GoogleLogin from '../../components/Social/GoogleLogin';
 
 const Register = () => {
-    useTitle('Register | Yoga Master - Unleashed Your Inner Self');
+    useTitle('Register | HealthVibe - Health Matters !');
     const { signUp, error, setError, updateUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const {
@@ -40,7 +40,7 @@ const Register = () => {
 
                             if (user.email && user.displayName) {
                                 return axios
-                                    .post('http://localhost:5000/new-user', userImp)
+                                    .post('https://healthvibe-deployed.onrender.com/new-user', userImp)
                                     .then(() => {
                                         navigate('/');
                                         return 'Registration successful!';

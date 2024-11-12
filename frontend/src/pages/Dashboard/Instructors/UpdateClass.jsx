@@ -7,39 +7,87 @@ const KEY = import.meta.env.VITE_IMG_TOKEN;
 
 const UpdateClass = () => {
     const API_URL = `https://api.imgbb.com/1/upload?key=${KEY}&name=`;
-    const data = useLoaderData();
+    const data = useLoaderData();  // Assuming you're using useLoaderData to load the initial class data
     const axiosSecure = useAxiosSecure();
     const { currentUser, isLoading } = useUser();
     const [image, setImage] = useState(null);
+
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
+    };
+
     const handleFormSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const newData = Object.fromEntries(formData);
-        formData.append('file', image);
-
         newData.instructorName = currentUser.name;
         newData.instructorEmail = currentUser.email;
         newData.status = 'pending';
         newData.submitted = new Date();
         newData.totalEnrolled = 0;
 
-        toast.promise(
-            axiosSecure.put(`/update-class/${data._id}`, newData)
-                .then(res => {
-                    console.log(res.data);
-                }),
-            {
-                pending: 'Submitting your class...',
-                success: 'Submitted successfully!',
-                error: 'Failed to submit your class',
-            }
-        );
+        // Only proceed with class update after image upload
+        if (image) {
+            const imageFormData = new FormData();
+            imageFormData.append('image', image);
+
+            toast.promise(
+                fetch(API_URL, {
+                    method: 'POST',
+                    body: imageFormData,
+                })
+                    .then((res) => res.json())
+                    .then((imageData) => {
+                        if (imageData.success) {
+                            // Add image URL to newData
+                            newData.image = imageData.data.display_url;
+                            // Now proceed to update class with the image URL
+                            return axiosSecure.put(`/update-class/${data._id}`, newData);
+                        } else {
+                            throw new Error('Image upload failed');
+                        }
+                    })
+                    .then((res) => {
+                        toast.success('Class updated successfully!');
+                        console.log(res.data);
+                    })
+                    .catch((err) => {
+                        toast.error('Failed to update your class');
+                        console.error(err);
+                    }),
+                {
+                    pending: 'Uploading your image...',
+                    success: 'Image uploaded and class updated successfully!',
+                    error: 'Failed to upload image and update your class',
+                }
+            );
+        } else {
+            // If no new image, proceed with class update directly
+            toast.promise(
+                axiosSecure.put(`/update-class/${data._id}`, newData)
+                    .then((res) => {
+                        toast.success('Class updated successfully!');
+                        console.log(res.data);
+                    })
+                    .catch((err) => {
+                        toast.error('Failed to update your class');
+                        console.error(err);
+                    }),
+                {
+                    pending: 'Updating your class...',
+                    success: 'Class updated successfully!',
+                    error: 'Failed to update your class',
+                }
+            );
+        }
     };
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        setImage(file);
-    };
+
+    // const handleImageChange = (e) => {
+    //     const file = e.target.files[0];
+    //     setImage(file);
+    // };
     if (isLoading) {
         return <div>Loading...</div>;
     }
@@ -71,7 +119,7 @@ const UpdateClass = () => {
                             type="file"
                             required
                             title='You can not update Image'
-                            disabled
+                            //disabled
                             onChange={handleImageChange}
                             name="image"
                             className="block mt-[5px] w-full border border-secondary shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500    file:border-0 file:bg-secondary file:text-white file:mr-4 file:py-3 file:px-4 " />

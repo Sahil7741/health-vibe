@@ -65,7 +65,7 @@ const AuthProvider = ({ children }) => {
             setUser(user);
             if (user) {
 
-                axios.post('http://localhost:5000/api/set-token', { email: user.email, name: user.displayName })
+                axios.post('https://healthvibe-deployed.onrender.com/api/set-token', { email: user.email, name: user.displayName })
                     .then(data => {
                         // console.log(data.data.token)
                         if (data.data.token) {

@@ -4,6 +4,7 @@ import React from 'react';
 import CheckoutPayment from './CheckoutPayment';
 import { Navigate, useLocation } from 'react-router-dom';
 import './Payment.css';
+
 const Payment = () => {
     const key = import.meta.env.VITE_STRIPE;
     const location = useLocation();
