@@ -3,7 +3,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { useUser } from '../../../../hooks/useUser';
 const CheckoutPayment = ({ price , cartItm }) => {
-    const URL =`http://localhost:5000/payment-info?${cartItm&&`classId=${cartItm}`}`
+    const URL =`https://healthvibe-deployed.onrender.com/payment-info?${cartItm&&`classId=${cartItm}`}`
     console.log(URL)
     const stripe = useStripe();
     const elements = useElements();
@@ -132,10 +132,10 @@ const CheckoutPayment = ({ price , cartItm }) => {
     return (
         <>
             <div className="text-center">
-                <h1 className="text-2xl font-bold">Payment Amount : <span className='text-secondary'>{price}$</span></h1>
+                <h1 className="text-2xl font-bold">Payment Amount : <span className='text-secondary'>₹{price}</span></h1>
             </div>
             <form onSubmit={handleSubmit}>
-                <CardElement
+                <CardElement    
                     options={{
                         style: {
                             base: {

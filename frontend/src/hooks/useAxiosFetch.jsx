@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const useAxiosFetch = () => {
   const axiosInstance = axios.create({
-    baseURL: 'http://localhost:5000', // TODO : Replace with base URL
+    baseURL: 'https://healthvibe-deployed.onrender.com/', // TODO : Replace with base URL
   });
 
   useEffect(() => {

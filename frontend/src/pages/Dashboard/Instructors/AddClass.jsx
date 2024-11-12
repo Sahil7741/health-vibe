@@ -6,6 +6,7 @@ const KEY = import.meta.env.VITE_IMG_TOKEN;
 
 const AddClass = () => {
     const API_URL = `https://api.imgbb.com/1/upload?key=${KEY}&name=`;
+    console.log("working");
     const axiosSecure = useAxiosSecure();
     const { currentUser, isLoading } = useUser();
     const [image, setImage] = useState(null);
@@ -32,7 +33,7 @@ const AddClass = () => {
                         newData.status = 'pending';
                         newData.submitted = new Date(); 
                         newData.totalEnrolled = 0;
-                        // console.log(newData);
+                        console.log(newData);
                         axiosSecure.post('/new-class' , newData)
                         .then(res => {
                             console.log(res.data);

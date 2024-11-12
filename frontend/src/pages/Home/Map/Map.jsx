@@ -1,27 +1,50 @@
-import React from 'react';
-import CountUp from 'react-countup';
+import React, { useState, useEffect } from 'react';
 
 const Map = () => {
+    const messages = [
+        "We provide best-in-class service",
+        "Health Vibe",
+        "Because health matters"
+    ];
+
+    const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+    const [fade, setFade] = useState(true);
+    const messageDisplayTime = 3000; // Time each message stays fully visible
+    const fadeTransitionTime = 1000; // Fade in and fade out duration
+
+    useEffect(() => {
+        const fadeOutTimer = setTimeout(() => setFade(false), messageDisplayTime);
+        
+        const fadeInTimer = setTimeout(() => {
+            setFade(true);
+            setCurrentMessageIndex((prevIndex) => (prevIndex + 1) % messages.length);
+        }, messageDisplayTime + fadeTransitionTime);
+
+        return () => {
+            clearTimeout(fadeOutTimer);
+            clearTimeout(fadeInTimer);
+        };
+    }, [currentMessageIndex]);
+
     return (
-        <div className='md:h-[300px] h-full my-11 bg-secondary' style={{ backgroundImage: `url('https://validthemes.live/themeforest/edukat/assets/img/map.svg')` }}>
-            <div className="md:h-[300px] text-white bg-black flex justify-center items-center bg-opacity-40">
-                <div className="flex md:flex-row flex-col py-7 gap-16">
-                    <div className="text-center">
-                        <h1 className='text-5xl font-bold'><CountUp duration={2} end={35} />M+</h1>
-                        <p className='font-bold text-lg'>Visitor</p>
-                    </div>
-                    <div className="text-center">
-                        <h1 className='text-5xl font-bold'><CountUp duration={3} end={5} />M+</h1>
-                        <p className='font-bold text-lg'>Subscriber</p>
-                    </div>
-                    <div className="text-center">
-                        <h1 className='text-5xl font-bold'><CountUp duration={2} end={950} />k+</h1>
-                        <p className='font-bold text-lg'>Students</p>
-                    </div>
-                    <div className="text-center">
-                        <h1 className='text-5xl font-bold'><CountUp duration={2} end={90} />%</h1>
-                        <p className='font-bold text-lg'>Success stories</p>
-                    </div>
+        <div
+            className='md:h-[300px] h-full my-11 bg-secondary'
+            style={{ backgroundImage: `url('https://validthemes.live/themeforest/edukat/assets/img/map.svg')` }}
+        >
+            <div
+                className="md:h-[300px] text-white bg-black flex justify-center items-center bg-opacity-40"
+                style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}
+            >
+                <div
+                    className="text-center"
+                    style={{
+                        opacity: fade ? 1 : 0,
+                        transition: `opacity ${fadeTransitionTime}ms ease-in-out`,
+                    }}
+                >
+                    <h1 className='text-5xl font-bold'>
+                        {messages[currentMessageIndex]}
+                    </h1>
                 </div>
             </div>
         </div>

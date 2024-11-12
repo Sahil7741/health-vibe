@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTitle } from '../../hooks/useTitle';
 const ErrorPage = () => {
-    useTitle('404 Page Not Found| Yoga Master Error');
+    useTitle('404 Page Not Found| HealthVibe - Health Matters !');
     const navigate = useNavigate();
     return (
         <div className="grid h-screen px-4 bg-white place-content-center">

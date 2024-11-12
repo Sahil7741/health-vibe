@@ -23,7 +23,7 @@ const GoogleLogin = () => {
                     };
 
                     if (user.email && user.displayName) {
-                        return axios.post('http://localhost:5000/new-user', userImp)
+                        return axios.post('https://healthvibe-deployed.onrender.com/new-user', userImp)
                             .then(() => {
                                 navigate('/');
                                 return 'Registration successful!';

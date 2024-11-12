@@ -30,16 +30,16 @@ const ManageUsers = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 axiosSecure.delete(`/delete-user/${id}`)
-                .then(res => { 
-                    console.log(res.data)
-                    
-                })
-                .catch(err => console.log(err))
-
-
+                    .then(res => {
+                        console.log(res.data);
+                        // Update users state to reflect the deletion
+                        setUsers((prevUsers) => prevUsers.filter(user => user._id !== id));
+                        Swal.fire('Deleted!', 'The user has been deleted.', 'success');
+                    })
+                    .catch(err => console.log(err));
             }
-        })
-    }
+        });
+    };
     return (
         <div>
             <h1 className='text-center text-4xl font-bold my-7'>Manage <span className='text-secondary'>Users</span></h1>

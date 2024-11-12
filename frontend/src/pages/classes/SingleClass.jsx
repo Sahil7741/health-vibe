@@ -91,7 +91,7 @@ const SingleClass = () => {
                       className=" rounded-md object-fut w-full h-full block"
                     />
                   </div>
-                  <h2 className="text-2xl mb-2">UI/UX Design and Graphics Learning Bootcamp 2022</h2>
+                  <h2 className="text-2xl mb-2"></h2>
 
                   <div className="author-meta mt-6 sm:flex  lg:space-x-16 sm:space-x-5 space-y-5 sm:space-y-0 items-center">
                     <div className="flex space-x-4 items-center group">
@@ -124,49 +124,23 @@ const SingleClass = () => {
                   </div>
 
                   <div className="nav-tab-wrapper mt-12">
-                    <ul id="tabs-nav" className=" course-tab mb-8">
-                      <li className="active">
-                        <a href="#tab1">Overview</a>
-                      </li>
-                      <li>
-                        <a href="#tab2">Carriculum</a>
-                      </li>
-                      <li>
-                        <a href="#tab3">Instructor</a>
-                      </li>
-                      <li>
-                        <a href="#tab4">Reviews</a>
-                      </li>
-                    </ul>
                     <div id="tabs-content ">
                       <div id="tab1" className="tab-content">
                         <div>
                           <h3 className=" text-2xl mt-8">Course Description</h3>
                           <p className="mt-4">
-                            This tutorial will help you learn quickly and
-                            thoroughly. Lorem ipsum, or lipsum as it sometimes
-                            known, is dummy text used in laying out print,
-                            graphic or web designs. Lorem ipsum dolor sit amet,
-                            consectetuer adipiscing elit. Donec odio. Quisque
-                            volutpat mattis eros.
-                            <br /> <br /> You’ll be exposed to principles and
-                            strategies, but, more importantly, you’ll learn how
-                            actually apply these abstract concepts by coding
-                            three different websites for three very different
-                            the audiences. Lorem ipsum is dummy text used in
-                            laying out print, graphic or web designs Lorem ipsum
-                            blinding shot chinwag knees.
+                          This course is perfect for those who are new to yoga or want to revisit the basics. Through a series of guided sessions, you will learn foundational yoga poses, breathing techniques, and mindfulness practices that will help reduce stress, improve flexibility, and enhance overall well-being. Whether you're looking to build strength, increase your mobility, or simply find peace of mind, this course will guide you every step of the way.
+                            <br /> <br /> Dive into the world of Hatha Yoga, a traditional style that focuses on balance, alignment, and breath control. In this course, we’ll explore various asanas (postures) and pranayama (breathing exercises) to build strength, flexibility, and mindfulness. Each class is designed to challenge your body while calming your mind, creating a balanced yoga practice that suits all levels of experience.
                           </p>
                           <div className="bg-[#F8F8F8] dark:bg-indigo-500 space-y-6 p-8 rounded-md my-8">
-                            <h4 className=" text-2xl">What You will Learn?</h4>
+                            <h4 className=" text-2xl">Benefits</h4>
                             <ul className=" grid sm:grid-cols-2 grid-cols-1 gap-6">
                               <li className=" flex space-x-3">
                                 <div className="flex-none  relative top-1 ">
                                   <img src="/correct-mark.png" alt="" />
                                 </div>
                                 <div className="flex-1">
-                                  Learn how perspective works and how to
-                                  incorporate your art
+                                Build endurance and cardiovascular health through dynamic sequences.
                                 </div>
                               </li>
 
@@ -175,8 +149,7 @@ const SingleClass = () => {
                                   <img src="/correct-mark.png" alt="" />
                                 </div>
                                 <div className="flex-1">
-                                  Learn how perspective works and how to
-                                  incorporate your art
+                                Gain mental clarity and stress relief, helping you feel more centered and present.
                                 </div>
                               </li>
 
@@ -185,8 +158,7 @@ const SingleClass = () => {
                                   <img src="/correct-mark.png" alt="" />
                                 </div>
                                 <div className="flex-1">
-                                  Learn how perspective works and how to
-                                  incorporate your art
+                                Focus on increasing stamina, flexibility, and strength through dynamic movements.
                                 </div>
                               </li>
 
@@ -195,8 +167,7 @@ const SingleClass = () => {
                                   <img src="/correct-mark.png" alt="" />
                                 </div>
                                 <div className="flex-1">
-                                  Learn how perspective works and how to
-                                  incorporate your art
+                                  cultivate a sense of peace and well-being that extends beyond the mat into everyday life.
                                 </div>
                               </li>
                             </ul>
@@ -209,7 +180,7 @@ const SingleClass = () => {
                                   <img src="/logo.png" alt="" />
                                 </span>
                                 <span className="flex-1 text-black">
-                                  Computer/Mobile
+                                Learn the fundamentals of yoga, including basic poses (asanas) and their benefits.
                                 </span>
                               </div>
                               <div className=" bg-white  rounded px-5 py-[18px] flex  shadow-box2 space-x-[10px] items-center">
@@ -217,7 +188,7 @@ const SingleClass = () => {
                                   <img src="/logo.png" alt="" />
                                 </div>
                                 <span className="flex-1 text-black">
-                                  Paper &amp; Pencil
+                                Master essential breathing techniques (pranayama) to enhance relaxation and reduce stress.
                                 </span>
                               </div>
                               <div className=" bg-white  rounded px-5 py-[18px] flex  shadow-box2 space-x-[10px] items-center">
@@ -225,7 +196,7 @@ const SingleClass = () => {
                                   <img src="/logo.png" alt="" />
                                 </div>
                                 <span className="flex-1 text-black">
-                                  Internet Connect
+                                Build strength, flexibility, and balance through a variety of gentle movements.
                                 </span>
                               </div>
                             </div>
@@ -250,13 +221,6 @@ const SingleClass = () => {
                             laying out print, graphic or web designs Lorem ipsum
                             blinding shot chinwag knees.
                           </p>
-                          <div className="bg-[#F8F8F8] dark:bg-indigo-500 space-y-6 p-8 rounded-md my-8">
-                            <h4 className=" text-2xl">This Course is For Beginners </h4>
-                          </div>
-                          <div>
-                            <h4 className=" text-2xl">What You will Learn?</h4>
-                            <p className="mt-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe repellendus voluptate eos molestiae fuga odit ipsam nemo tenetur quod eaque error voluptatibus sapiente quis quaerat veniam, reprehenderit dolorum nisi in. Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, ipsum possimus sapiente minus facere est? Dolore necessitatibus eaque dolores magnam explicabo delectus harum aperiam animi! Fuga sapiente doloribus blanditiis rerum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ab esse adipisci earum laboriosam eos fugit eius temporibus architecto hic reprehenderit ducimus soluta maxime sunt numquam quo consectetur, facere pariatur?</p>
-                          </div>
                         </div>
                       </div>
                     
@@ -277,15 +241,17 @@ const SingleClass = () => {
                         alt=""
                         className=" block w-full h-full object-cover rounded "
                       />
-                      <div className=" absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <img src="/play.png" alt="" />
-                      </div>
+                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+  <a href="https://www.youtube.com/watch?v=I77hh5I69gA" target="_blank" rel="noopener noreferrer">
+    <img src="/play.png" alt="Play Video" />
+  </a>
+</div>
                     </a>
-                    <h3>${course.price}</h3>
+                    <h3>₹{course.price}</h3>
                     <button onClick={() => handelSelect(course._id)} title={role === 'admin' || role === 'instructor' ? 'Instructor/Admin Can not be able to select ' ? course.availableSeats <1 : 'No seat avalible' : 'You can select this classes' } disabled={role === 'admin' || role === 'instructor' || course.availableSeats < 1}  className="btn btn-primary w-full text-center bg-secondary py-2 px-6 text-white ">
                       Enroll Now
                     </button>
-                    <ul className="list  ">
+                    {/* <ul className="list  ">
                       <li className=" flex space-x-3 border-b border-[#ECECEC] mb-4 pb-4 last:pb-0 past:mb-0 last:border-0">
                         <div className="flex-1 space-x-3 flex items-center">
                           <FaUser className="inline-flex"/>
@@ -345,8 +311,8 @@ const SingleClass = () => {
                         </div>
                         <div className="flex-none">English</div>
                       </li>
-                    </ul>
-                    <ul className="flex space-x-4 items-center pt-3 ">
+                    </ul> */}
+                    {/* <ul className="flex space-x-4 items-center pt-3 ">
                       <li className=" text-black font-semibold">Share On:</li>
                       <li>
                         <a href="#" className="flex h-10 w-10">
@@ -368,10 +334,10 @@ const SingleClass = () => {
                           <img src="/logo.png" alt="" />
                         </a>
                       </li>
-                    </ul>
+                    </ul> */}
                   </div>
 
-                  <div className="wdiget">
+                  {/* <div className="wdiget">
                     <h4 className=" widget-title">Related Courses</h4>
                     <ul className="list">
                       <li className=" flex space-x-4 border-[#ECECEC] pb-6 mb-6 last:pb-0 last:mb-0 last:border-0 border-b">
@@ -454,7 +420,7 @@ const SingleClass = () => {
                         </div>
                       </li>
                     </ul>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

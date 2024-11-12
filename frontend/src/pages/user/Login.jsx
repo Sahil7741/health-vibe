@@ -6,7 +6,7 @@ import { FadeLoader } from 'react-spinners';
 import { useUser } from '../../hooks/useUser';
 import GoogleLogin from '../../components/Social/GoogleLogin';
 const Login = () => {
-    useTitle('Login | Yoga Master - Unleashed Your Inner Self');
+    useTitle('Login |  HealthVibe - Health Matters !');
     // const { refetch } = useUser();
     const location = useLocation();
     const [showPassword, setShowPassword] = useState(false);

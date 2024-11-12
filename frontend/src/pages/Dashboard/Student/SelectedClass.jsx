@@ -5,14 +5,14 @@ import { useUser } from '../../../hooks/useUser';
 import moment from 'moment';
 import { Link, useNavigate } from 'react-router-dom';
 import { MdDeleteSweep } from 'react-icons/md';
-import { FiDollarSign } from 'react-icons/fi';
+import { FaRupeeSign } from "react-icons/fa";
 import { motion } from 'framer-motion';
 import Swal from 'sweetalert2';
 import { Pagination, ThemeProvider, createTheme } from '@mui/material';
 import { ScaleLoader } from 'react-spinners';
 
 const SelectedClass = () => {
-    useTitle('Selected Class | Yoga Master Selected Class');
+    useTitle('Selected Class | HealthVibe - Health Matters !');
     const { currentUser } = useUser();
     const [loading, setLoading] = useState(true);
     const [classes, setClasses] = useState([]);
@@ -63,7 +63,6 @@ const SelectedClass = () => {
     const handlePay = (id) => {
         console.log(id, 'id from pay')
         const item = classes.find((item) => item._id === id);
-        // console.log(item, 'item from pay')
         const price = item.price;
         navigate('/dashboard/user/payment', { state: { price: price, itemId: id } });
     };
@@ -81,7 +80,6 @@ const SelectedClass = () => {
             if (result.isConfirmed) {
                 axiosSecure.delete(`/delete-cart-item/${id}`)
                     .then(res => {
-                        console.log(res.data)
                         if (res.data.deletedCount > 0) {
                             Swal.fire(
                                 'Deleted!',
@@ -94,11 +92,12 @@ const SelectedClass = () => {
                     })
             }
         })
-        // Handle the delete action here
     };
-    if (loading) { // [2
+    
+    if (loading) {
         return <div className='h-full w-full flex justify-center items-center'><ScaleLoader color="#FF1949" /></div>;
     }
+
     return (
         <div>
             <div className="my-6">
@@ -122,7 +121,7 @@ const SelectedClass = () => {
                                     </thead>
                                     <tbody>
                                         {
-                                            classes.length === 0 ? <tr><td colSpan='5' className='text-center text-2xl font-bold'>No Classes Found</td></tr> : // If there is no item in the cart
+                                            classes.length === 0 ? <tr><td colSpan='5' className='text-center text-2xl font-bold'>No Classes Found</td></tr> :
                                                 paginatedData.map((item, idx) => {
                                                     const letIdx = (page - 1) * itemPerPage + idx + 1;
                                                     return <tr key={item._id}>
@@ -133,7 +132,7 @@ const SelectedClass = () => {
                                                                 <span className={`font-semibold ${item.name.length > 20 ? 'text-[13px]' : 'text-[18px]'} whitespace-pre-wrap`}>{item.name}</span>
                                                             </div>
                                                         </td>
-                                                        <td className="py-4">${item.price}</td>
+                                                        <td className="py-4">₹{item.price}</td>
                                                         <td className="py-4">
                                                             <p className='text-green-700 text-sm'>{moment(item.submitted).format('MMMM Do YYYY')}</p>
                                                         </td>
@@ -152,11 +151,9 @@ const SelectedClass = () => {
                                                                 className='px-3 py-1 cursor-pointer bg-green-500 rounded-3xl text-white font-bold flex items-center'
                                                                 onClick={() => handlePay(item._id)}
                                                             >
-                                                                <FiDollarSign className="mr-2" />
+                                                                <FaRupeeSign className="mr-2" />
                                                                 Pay
                                                             </motion.button>
-
-
                                                         </td>
                                                     </tr>
                                                 })}
@@ -172,22 +169,20 @@ const SelectedClass = () => {
                                 <h2 className="text-lg font-semibold mb-4">Summary</h2>
                                 <div className="flex justify-between mb-2">
                                     <span>Subtotal</span>
-                                    <span>${totalPrice}</span>
+                                    <span>₹{totalPrice}</span>
                                 </div>
                                 <div className="flex justify-between mb-2">
                                     <span>Taxes</span>
-                                    <span>
-                                        ${totalTax.toFixed(2)}
-                                    </span>
+                                    <span>₹{totalTax.toFixed(2)}</span>
                                 </div>
                                 <div className="flex justify-between mb-2">
                                     <span>Extra Fees</span>
-                                    <span>$0</span>
+                                    <span>₹0</span>
                                 </div>
                                 <hr className="my-2" />
                                 <div className="flex justify-between mb-2">
                                     <span className="font-semibold">Total</span>
-                                    <span className="font-semibold">${price.toFixed(2)}</span>
+                                    <span className="font-semibold">₹{price.toFixed(2)}</span>
                                 </div>
                                 <motion.button
                                     whileHover={{ scale: 1.1 }}

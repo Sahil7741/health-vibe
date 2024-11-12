@@ -23,6 +23,7 @@ const AsInstructor = () => {
         };
         axiosFetch.post('/as-instructor', data).then((res) => {
             console.log(res.data);
+            setSubmittedData(data);
         });
     };
 

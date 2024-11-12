@@ -119,7 +119,7 @@ const Classes = () => {
                             <p className="text-gray-500 text-xs">Instructor : {cls.instructorName}</p>
                             <div className="flex items-center justify-between mt-4">
                                 <span className="text-gray-600 text-xs">Available Seats: <span className='text-secondary'>{cls.availableSeats}</span> </span>
-                                <span className="text-green-500 font-semibold">${cls.price}</span>
+                                <span className="text-green-500 font-semibold">₹{cls.price}</span>
                             </div>
                             
                             <Link to={`/class/${cls._id}`}><button className="px-4 py-2 mt-4 w-full mx-auto text-white disabled:bg-red-300 bg-secondary duration-300 rounded hover:bg-red-700">
